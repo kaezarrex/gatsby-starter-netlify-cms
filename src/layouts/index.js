@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import './all.css'
 
 const TemplateWrapper = ({ children }) => (
@@ -10,6 +11,7 @@ const TemplateWrapper = ({ children }) => (
     <Helmet title="One and Only Paper" />
     <Navbar />
     <div>{children()}</div>
+    <Footer />
   </div>
 )
 

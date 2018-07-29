@@ -2,24 +2,45 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Content, { HTMLContent } from '../components/Content'
 
-export const HomePageTemplate = ({ title, content, contentComponent }) => {
+import featuredImage from '../img/featured.jpg'
+
+export const HomePageTemplate = ({
+  title,
+  content,
+  contentComponent,
+  firstParagraph,
+}) => {
   const PageContent = contentComponent || Content
 
+  console.log(featuredImage)
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <PageContent className="content" content={content} />
-            </div>
-          </div>
+    <div>
+      <div className="flex reverse overlap section">
+        <div className="column">
+          <img src={featuredImage} />
+          <a
+            className="credit"
+            target="_blank"
+            href="http://heatherchippsphotography.com/"
+          >
+            photo by heather chipps photography
+          </a>
+        </div>
+        <div className="large column">
+          <p
+            style={{
+              width: '14.5em',
+              margin: '0 auto',
+              padding: '6em 1em 5em',
+            }}
+          >
+            <span className="leadIn">{firstParagraph.leadIn}</span>
+            <br />
+            {firstParagraph.body}
+          </p>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
@@ -27,16 +48,22 @@ HomePageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   contentComponent: PropTypes.func,
+  firstParagraph: PropTypes.shape({
+    leadIn: PropTypes.string,
+    body: PropTypes.string,
+  }).isRequired,
 }
 
 const HomePage = ({ data }) => {
   const { markdownRemark: post } = data
+  console.log(data)
 
   return (
     <HomePageTemplate
       contentComponent={HTMLContent}
       title={post.frontmatter.title}
       content={post.html}
+      firstParagraph={post.frontmatter.firstParagraph}
     />
   )
 }
@@ -53,6 +80,10 @@ export const homePageQuery = graphql`
       html
       frontmatter {
         title
+        firstParagraph {
+          leadIn
+          body
+        }
       }
     }
   }
