@@ -29,7 +29,16 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "home-page"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
-          - {label: "First Paragraph", name: firstParagraph, widget: object, fields:[{label: "Lead-in", name: leadIn, widget: string}, {label: "Body", name: body, widget: markdown}]}
+          - label: "First Paragraph"
+            name: firstParagraph
+            widget: object
+            fields:
+              - label: "Lead-in"
+                name: leadIn
+                widget: string
+              - label: "Body"
+                name: body
+                widget: text
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"
