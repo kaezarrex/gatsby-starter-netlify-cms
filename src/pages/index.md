@@ -7,6 +7,10 @@ firstParagraph:
     all feels so important. That’s why we’re here - to take the stress away, and
     make the custom stationery process easy and fun for you!
   leadIn: 'At One + Only Paper,'
+  image:
+      image: /img/jumbotron.jpg
+      credit: 'photo by heather chipps photography'
+      creditUrl: 'http://heatherchippsphotography.com/'
 ---
 ### Welcome Home
 

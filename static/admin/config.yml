@@ -39,6 +39,13 @@ collections:
               - label: "Body"
                 name: body
                 widget: text
+              - label: "Image"
+                name: image
+                widget: object
+                fields:
+                    - {label: "Image", name: image, widget: image}
+                    - {label: "Credit", name: credit, widget: string}
+                    - {label: "Credit URL", name: creditUrl, widget: string}
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"

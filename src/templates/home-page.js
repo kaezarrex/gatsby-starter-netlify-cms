@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Content, { HTMLContent } from '../components/Content'
 
-import featuredImage from '../img/featured.jpg'
-
 export const HomePageTemplate = ({
   title,
   content,
@@ -12,18 +10,17 @@ export const HomePageTemplate = ({
 }) => {
   const PageContent = contentComponent || Content
 
-  console.log(featuredImage)
   return (
     <div>
       <div className="flex reverse overlap section">
         <div className="column">
-          <img src={featuredImage} />
+          <img src={firstParagraph.image.image} />
           <a
             className="credit"
             target="_blank"
-            href="http://heatherchippsphotography.com/"
+            href={firstParagraph.image.creditUrl}
           >
-            photo by heather chipps photography
+            {firstParagraph.image.credit}
           </a>
         </div>
         <div className="large column">
@@ -83,6 +80,11 @@ export const homePageQuery = graphql`
         firstParagraph {
           leadIn
           body
+          image {
+            image
+            credit
+            creditUrl
+          }
         }
       }
     }
